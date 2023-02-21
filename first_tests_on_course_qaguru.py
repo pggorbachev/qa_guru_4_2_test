@@ -16,12 +16,9 @@ def test_login_on_qaguru():
     browser.element('.page-full-block').should(have.text('Здравствуйте, QA_GURU_BOT'))
 
 
-def test_google_should_find_selene():
-    browser.config.hold_browser_open = True
-
-    browser.open('https://google.com')
+def test_google_should_find_selene(open_browser, maximize_window):
     browser.element('[name="q"]').should(be.blank).type('selene').press_enter()
-    browser.element('[id="search"]').should(have.text('yashaka/selene: User-oriented Web UI browser tests in Python'))
+    browser.element('[id="search"]').should(have.text('User-oriented Web UI browser tests in Python'))
 
 
 def test_homework_for_course_qa_guru_1():
