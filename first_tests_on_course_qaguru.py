@@ -22,6 +22,11 @@ def test_google_should_find_selene(open_browser, maximize_window):
     browser.element('[id="search"]').should(have.text('User-oriented Web UI browser tests in Python'))
 
 
+def test_negative_find_google_selene(open_browser, maximize_window):
+    browser.element('[name="q"]').should(be.blank).type('selene').press_enter()
+    find_text = browser.element('[id="search"]').should(have.text('User-oriented Web UI browser tests in Python'))
+    assert find_text == 'User-oriented Web UI browser tests wrong text Python', 'Text should be right'
+
 def test_homework_for_course_qa_guru_1():
     browser.open('https://demoqa.com/automation-practice-form')
     browser.config.hold_browser_open = True
